@@ -1,0 +1,316 @@
+
+# work summary 2016/5/14 Sta
+
+## 1. compiling server network issue
+
+> - Our VMM should include one NIC for management usage, configuare like this
+> ip: 11.12.112.17
+> mask: 255.255.255.0
+> gateway: 11.12.112.1
+> DNS1:192.168.3.1
+> DNS2:11.12.111.240
+>
+> - For VMM client SW in windows， we have two VM switches， them include indivadual vmkernel.
+> every vmkernel has independent ip, gateway, dns setting, and there is one vm network used for every switch user.
+>
+> - On vm ubuntu client side, we just need to add  vm NIC with one of vm networks. in my opnion, vm kernel manage the vm network within
+> whole switch.
+>
+## 2. learning of ReText Usage
+
+> - the first feeling is ReText good, i want it!
+>
+> ---
+
+# work summary 2016/5/16 Mon
+
+## 1. 解决kernel config 原始配置的由来以及自己的配置被冲掉等问题
+>
+> - Our VMM should include one NIC for management usage, configuare like this
+> ip: 11.12.112.17
+> mask: 255.255.255.0
+> gateway: 11.12.112.1
+> DNS1:192.168.3.1
+> DNS2:11.12.111.240
+>
+> - For VMM client SW in windows， we have two VM switches， them include indivadual vmkernel.
+> every vmkernel has independent ip, gateway, dns setting, and there is one vm network used for every switch user.
+>
+> - On vm ubuntu client side, we just need to add  vm NIC with one of vm networks. in my opnion, vm kernel manage the vm network within
+> whole switch.
+>
+## 2. learning of ReText Usage
+
+> - the first feeling is ReText good, i want it!
+>
+> ---
+
+# work summary 2016/5/23 Mon
+
+## 1 work plan
+> - to find out pkg-gen using L2 or L3 forward package
+>
+> ---
+>
+
+# work summary 2016/5/31 Tues
+
+## 1. work plan
+> - to find out how to use the legacy gateway machine
+> - to fix the dts currently issues work with jibo together
+> - learning of network flow, RSS
+> - register the 微信公众平台
+
+## 2. wrok report
+> - to find out how to use the legacy gateway machine          -------> almost done，the rest of work need to with woker in zhengzhou
+> - to fix the dts currently issues work with jibo together       -------> done
+> - learning of network flow, RSS           -------> 50% done
+> - register the 微信公众平台                 -------> register done
+
+
+# work summary 2016/6/1 Wed
+
+## 1. work plan
+> - learning the rest of network flow, RSS knowleage
+> - setup the dual NIC on ourself PC
+> - prepare the env for the total solustion of legacy gateway device
+> - learning of WR docs and legacy GW features
+> - learning and discuss micro GW solustion with WXB
+> - register the 微信公众平台
+
+## 2. wrok report
+> - learning the rest of network flow, RSS knowleage    ------> done
+> - setup the dual NIC on ourself PC   ------> done
+> - prepare the env for the total solustion of legacy gateway device    --------> waiting for liao' response
+> - learning of WR docs and legacy GW features   --------> WR doc done for the first phase
+> - learning and discuss micro GW solustion with WXB  --------> on-going
+> - register the 微信公众平台 -------> not starting
+> ---
+>
+
+# work summary 2016/6/2 Thurs
+
+## 1. work plan
+> - to find out linux driver perforance compare with dpdk via pkg-gen tool
+> - to setup the env for L3FWD used the func of linux kernel, pkg-gen used on one pc to send the package, the other receive on the other
+> side.
+> - have a meeting with WR's guys to discuss it is possiable to use the INP
+> - register the 微信公众平台
+
+## 2. wrok report
+
+---
+
+# work summary 2016/6/3 Fri
+
+## 前期工作总结
+> 前期主要调查了DPDK的一些实现原理，测试方法和套件，都是针对DPDK和普通linux系统进行的.
+>
+> - DTS 搭建远端dpdk测试，主要是tester 和 DUT都运行dpdk,两者通过ssh建立控制，完成DUT端的各项DPDK功能测试。
+> 目前搭建起了一个基本DTS的测试平台。
+> - DPDK pktgen 使用PMD驱动在配置sequence时64字节的包吞吐率到达1Gbps，不使用sequence时64字节的包吞吐率达到780Mbps
+> - linux pktgen测试工具，64字节的包吞吐率达到600Mbps，１500字节的包吞吐率达到950Mbps。
+> - DPDK testpmd测试工具，使用linux pcap库调用linux网卡驱动64字节的包吞吐率达到160Mbps，一个包的处理时间在2600多个cpu cycle，使用dpdk的pmd驱动可以达到1Gbps，一个包的处理时间在300多个cpu cycle。
+> 目前分析pcap库160Ｍbps的原因是网卡没有支持多队列导致。
+> 遗留的问题１：DPDK sequence发包的原理是怎样的 ，优先级高需要尽快处理
+> 遗留的问题２：DPDK pktgen是否支持pcap库，这个优先级低暂不处理
+>
+> 后期一到两周的工作重点
+> 1. 使用iperf或者jperf搭建应用测试环境，为网络环境提供一个应用层（TCP/UDP）的测试方法
+> 2. 需要调查梳理网卡的各项硬件特性及网卡驱动的实现过程，这块我们理解不够，但它确和性能息息相关
+
+# work summary 2016/6/21 Tues
+
+## 1. work plan
+> - update usage of markdown & atom installtion to wiki
+> - setup repsitory of workdoc on PC to collect my common doc & Drafts
+> - output vtun internet frame flow　under our setup env
+> - start with setup openvpn env
+
+## 2. work report
+> - update usage of markdown & atom installtion to wiki    -----> done
+> - setup repsitory of workdoc on PC to collect my common doc & Drafts -----> done
+> - output vtun internet frame flow　under our setup env -----> done
+> - start with setup openvpn env -----> shifting one day
+
+# work summary 2016/6/22 Wed
+## 1. work plan
+> - learning e1000e dirver　in the morninng
+> - and discuss with guys who resposible for NIC dirver at the afternoon
+> - try to start setup openvpn
+
+## 2. work report
+> - learning e1000e dirver　in the morninng   
+> -----> just prepare for discussion this afternoon
+> - and discuss with guys who resposible for NIC dirver at the afternoon
+> -----> we need more tech details on it, i don't think we got it.
+> - try to start setup openvpn
+> -----> handover this work to JB & LZX
+
+# work summary 2016/6/23 Thurs
+## 1. work plan
+> - try to understand openvpn theory and PKI implementation by openvpn
+> - meeting with our guys to discuss some common issues like taking leave,
+> email style, daily report. and also include content of work.
+> - openvpn setup already done, but the theory learning is on-going
+
+## 2. work report
+> - try to understand openvpn theory and PKI implementation by openvpn
+> -----> on-going
+> - meeting with our guys to discuss some common issues like taking leave,
+> email style, daily report. and also include content of work.
+> -----> done
+
+# work summary 2016/6/28 Tues
+## 1. work plan
+> heard of no deal with windriver for INP, so we need to find a solution to run dpdk platform.
+> so far we have below two solutions are fitable for us
+> - mtcp, from github, a small TCP stack have a good combination with dpdk.
+> - libos ---- NUSE
+
+## 2. work report
+> - mtcp env setup done, but there is an example with C/S mode inside mtcp srouce code cannot work, we are trying to find out the root cause.
+> - libos ---- NUSE is not started
+
+
+# work summary 2016/6/29 Wed
+## 1. work plan
+> - to find out the root cause of mtcp (epserver/epwget) example issue
+> - to checkout if mtcp have a good ARP and ICMP protocol
+> - try to L3FWD using mtcp and dpdk
+
+
+## 2. work report
+> - to find out the root cause of mtcp (epserver/epwget) example issue
+> ----- mtcp issue already fixed, the root cause is incurrect mtcp parameter
+> - to checkout if mtcp have a good ARP and ICMP protocol
+> ----- so far we try to use ARP and ICMP, it's fine
+> - try to L3FWD using mtcp and dpdk
+> ----- a problem we got, seems L3FWD not implementation on mtcp, we are trying to find the good way. we also fixed a issue about mtcp route table parse
+
+# work summary 2016/7/11 Mon
+## 1. work plan
+> a. output the doc of mtcp software framework
+
+> b. discuss the doc with our guys
+
+## 2. work report
+> item a is done
+
+> item b is done
+
+
+# work summary 2016/7/12 Tues
+## 1. work plan
+> a. update the wiki for mtcp framework, share these knowledge with our guys. such as mtcp init flow, mtcp protocol handle flow, mtcp event management, and so on.
+
+> b. get started to add ip forward into mtcp.
+
+> c. discuss our work plan and progress with our guys. TCP coding example done by Wang Yanpen next step is add capture packages inside mtcp and UDP protocol implementation; NIC e1000e driver need to be updated on wiki by Li Zhaoxi; Ji Bo share the way of the mtcp NIC config with us, udpate related stuff as well on wiki.
+
+## 2. work report
+> item a is done.
+
+> item b 20%
+
+> item c is done.
+
+# work summary 2016/7/14 Thurs
+## 1. work plan
+> a. to do the ip forward within mtcp
+
+
+## 2. work report
+> it's ok using ping command between two hosts var our gateway.
+but failed using tcp protocol in that case.finding root causes is on-going.
+
+
+# work summary 2016/7/19 Tues
+## 1. go in for TAF meeting, details as below
+* TAF 发布了去年的一些研究报告
+* 1 安全手机技术研究
+* 2 移动APP安全分析报告
+* 3 BYOD技术研究
+
+> a. TEE Client API JAVA版测试方法立项申请，跟GP的C语言版相比，会少一些算法的接口测试
+
+> b. TEE Internal API JAVA版测试方法立项申请，跟GP的C语言版相比，会少一些算法的接口测试
+
+> c. TEE 产品安全评估内容和方法立项申请
+
+> d. 移动智能终端指纹安全接口测试方法立项申请
+
+> e. 移动智能终端指纹框架接口测试方法立项申请
+
+> f. 安全能力标准实施细则讨论 CTA中的安全测试标准的更新和细化
+
+
+## 2. work report
+> all done
+
+
+# work summary 2016/7/20 Wed
+## 1. work plan
+
+> * a. ip forward work already finished. we discuss the code review code style and so on.
+> * b. discussion of UDP designed by Wang Yanpeng, its just a craft, i suggest we can refer to
+> UDP implementation from other TCP stack, like LWIP. its important to research what kind of way to manage UDP buffer and communication with user app.
+> * c. got the information from agent(文哗) “NXP will packet the LS1043A DB as soon as possible”
+
+## 2. work report
+> * item a done
+> * item b, the current design is not good, we need to find the better way to manage the UDP buffer and event transfer.
+> * item c, need to be followed up
+
+# work summary 2016/7/25 Mon
+## 1. work plan
+
+> * a. upgrade event handle and add log output when error happened for TCP demo.
+> * b. add default gateway handle function for mtcp send pakcets
+> * c. prepare a srcipt for mtcp env building
+> * d. research the solution of getting gw information from linux system.
+> * it's better to get gw info from linux than config file
+
+## 2. work report
+> * item a, done
+> * item b,
+> * item c,
+
+# work summary 2016/8/02 Tues
+## 1. work plan
+
+> * a. to find out what vtun to do, how should i do for our tunnal?
+> * b. discuss with LZX about UDP protocol design
+
+## 2. work report
+> * item a,
+> * item b,
+> * item c,
+
+# work summary 2016/8/23 Tues
+## 1. work plan
+
+> * a. discss with our guys about internal NIC process flow, such as receive buffer, send packet interface, and so on.
+> * b. discuss with our guys about NAT implementation.
+> * c. test the intel82599 performance.
+
+## 2. work report
+> * item a,
+> * item b,
+> * item c,
+
+
+----------
+
+# work summary 2016/10/26 Wed
+## 1. work item
+> *
+> *
+> *
+
+## 2. work summary
+> *
+> * 
+> *
+
+----------
