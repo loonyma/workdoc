@@ -21,38 +21,8 @@
 http://www.cnblogs.com/lzrabbit/p/4298794.html
 http://zhidao.baidu.com/question/397085991.html
 
-1. work plan
-a. as epoll and event handle flow finished, i continue to researcch the mtcp package flow.
-receive flow and send flow, include some parts of TCP stream create, enqueue and dequeue and so on. 
+#CPU 结构NUMA
 
-2. work report 
-almost done of above item a, next spet is planning to update wiki about these knowledge.
-
-#陈威
-> 性能测试API完成
-> 调整数据结构的通用性能
-> 会话表重用性的整合
-#宗鹏
-> GPS修改，安全芯片支持
-#小斌
-> 编译的重用性
-> 虚拟网卡在微型网关上的实现
-> 整理代码结构
-#李昭熹
-> 整理代码结构及编译框架
-#赵建云
-> 编译的重用性
-> 虚拟网卡在微型网关上的实现
-> 整理代码结构
-#杨金鹏
-> 会话表重用性的整合
-#郭卫斌
-> WIFI打开的问题
-> WIFI 热点，
-#冀博
-> 
-> 
-> 
-
+http://xmodulo.com/identify-cpu-processor-architecture-linux.html
  
 
